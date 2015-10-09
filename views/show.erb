@@ -1,0 +1,35 @@
+<form method="post" action="/<%= params[:context] %>">
+    <table>
+        <tr>
+            <td>username</td>
+            <td>first</td>
+            <td>last</td>
+            <td>display name</td>
+            <td>email</td>
+            <td>active</td>
+        </tr>
+    <% if @users.count == 0 %>
+        <tr><td colspan="6">No Users</td></tr>
+    <% else %>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user[1]["username"] %></td>
+                <td><%= user[1]["first"] %></td>
+                <td><%= user[1]["last"] %></td>
+                <td><%= user[1]["display_name"] %></td>
+                <td><%= user[1]["email"] %></td>
+                <td><%= user[1]["active"] %></td>
+            </tr>
+        <% end %>
+    <% end %>
+        <tr>
+            <td><input type="text" name="username" /></td>
+            <td><input type="text" name="first" /></td>
+            <td><input type="text" name="last" /></td>
+            <td><input type="text" name="display_name" /></td>
+            <td><input type="text" name="email" /></td>
+            <td><input type="text" name="active" />
+            <button type="submit">Create</button></td>
+        </tr>
+    </table>
+</form>
